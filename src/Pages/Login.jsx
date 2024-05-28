@@ -2,6 +2,9 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import GoogleLogin from "../Components/Login-Registration/GoogleLogin";
 import useAuth from "../Hooks/useAuth";
 import { useEffect } from "react";
+import Dashboard from "./Dashboard";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { signIn, user } = useAuth();
@@ -20,6 +23,7 @@ const Login = () => {
     console.log(email, password);
 
     await signIn(email, password);
+    //toast.success("Logged in successfully!");
   };
 
   useEffect(() => {
@@ -29,6 +33,8 @@ const Login = () => {
   }, [user, from, navigate]);
 
   return (
+    <> 
+    {/* {email && <Dashboard email={email}/>} */}
     <form onSubmit={handleSUbmit} className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
@@ -64,13 +70,12 @@ const Login = () => {
                 name="password"
                 required
               />
-            </div>
-
+            </div>          
             <div className="form-control mt-6">
               <input
                 className="btn bg-red-500 text-white"
                 type="submit"
-                value="Login"
+                value="Login"               
               />
             </div>
             <div className="mt-6">
@@ -88,6 +93,7 @@ const Login = () => {
         </div>
       </div>
     </form>
+    </>
   );
 };
 

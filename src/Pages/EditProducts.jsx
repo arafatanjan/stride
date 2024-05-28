@@ -24,7 +24,9 @@ console.log(ball);
     const image_url = form.image_url.value;
 
     const data = { id, title, brand, price, description, image_url };
-
+    if (!window.confirm('Are you sure you want to edit this item?')) {
+      return;
+    }
     await fetch(`http://localhost:3000/balls/${ball.id}`, {
       method: "PATCH",
       headers: {

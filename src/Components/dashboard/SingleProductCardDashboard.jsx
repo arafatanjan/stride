@@ -1,37 +1,55 @@
-/* eslint-disable react/prop-types */
+
 import { Link } from "react-router-dom";
 import { useState } from "react";
-// eslint-disable-next-line react/prop-types
+//import { toast } from 'react-toastify';
+
 const SingleProductCardDashboard = ({ ball, onDelete }) => {
   const { id, title, brand, price, description, image_url } = ball;
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
 
-  const handleDelete = async () => {
-   
-    await fetch(`http://localhost:3000/balls/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => { 
-        console.log(data);
-        onDelete(id);
-        setToastMessage("Deleted successfully.");
-        setShowToast(true);
-        setTimeout(() => setShowToast(false), 3000); 
+   const handleDelete = async () => {
+    // setToastMessage("Deleted successfully.");
+    // setShowToast(true);
+    // setTimeout(() => setShowToast(false),1000); 
+    try {
+      
+      const response = await fetch(`http://localhost:3000/balls/${id}`, {
+        method: "DELETE",
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the product.");
+      }
+
+      const data = await response.json();
+      //console.log(data);
+      window.alert('Deleted the product');
+      //window.confirm('Delete the item?')
+      // setToastMessage("Deleted successfully.");
+      // setShowToast(true);
+      // setTimeout(() => setShowToast(false),3000);
+      onDelete(id);     
+      //toast("Wow so easy!")
+      
+    } catch (error) {
+      console.error("Error deleting product:", error);
+      setToastMessage("Failed to delete.");
+      setShowToast(true);
+      setTimeout(() => setShowToast(false), 3000);
+    }
   };
 
   return (
   
     <div className="card w-96 bg-base-100 shadow-xl">
-    {showToast && (
-        <div className="fixed top-5 right-5 toast toast-middle toast-center">
+    {/* {showToast && (
+        <div className="fixed top-5 right-5 toast toast-middle w-10 toast-center">
           <div className="alert alert-error">
             <span>{toastMessage}</span>
           </div>
         </div>
-      )}
+      )} */}
       <figure>
         <img src={image_url} alt="ball" className="object-cover w-96 h-100"/>
       </figure>

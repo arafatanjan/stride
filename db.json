@@ -5,7 +5,7 @@
       "title": "Nike Flight",
       "brand": "Nike",
       "price": "160",
-      "description": "Nike Flight is a revolutionary football designed for consistent flight, featuring Aerowsculpt technology.",
+      "description": "Nike Flight is a revolutionary football designed for consistent flight, featuring Aerowsculpt technology..",
       "image_url": "https://i.ibb.co/ryyt1rV/Mitre-Delta-Max-White-2.png"
     },
     {
@@ -17,7 +17,7 @@
       "image_url": "https://www.tradeinn.com/f/13701/137014770/puma-future-flare-mini-football-ball.jpg"
     },
     {
-      "id": "5",
+      "id": "4",
       "title": "Spalding NBA Streett",
       "brand": "Spalding",
       "price": "30",
@@ -29,7 +29,7 @@
       "title": "Adidas Finale Istanbul",
       "brand": "Adidas",
       "price": "150",
-      "description": "The Adidas Finale Istanbul is the official match ball for the UEFA Champions League, known for its seamless surface and dynamic design.",
+      "description": "The Adidas Finale Istanbul is the official match ball for the UEFA Champions League, known for its seamless surface.",
       "image_url": "https://i.ebayimg.com/images/g/5osAAOSwOrRiG6tu/s-l1600.jpg"
     },
     {

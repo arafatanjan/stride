@@ -3,6 +3,7 @@ import { useState } from "react";
 const AddProducts = () => {
    const [showToast, setShowToast] = useState(false);
     const handleSubmit = async (e) => {
+      
       e.preventDefault();
   
       const form = e.target;
@@ -14,6 +15,9 @@ const AddProducts = () => {
       const image_url = form.image_url.value;
   
       const data = { id, title, brand, price, description, image_url };
+      if (!window.confirm('Are you sure you want to add this item?')) {
+        return;
+      }
   
       await fetch("http://localhost:3000/balls", {
         method: "POST",
